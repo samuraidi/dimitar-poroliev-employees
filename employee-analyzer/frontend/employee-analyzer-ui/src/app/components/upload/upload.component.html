@@ -1,0 +1,50 @@
+<div class="container">
+    <input type="file" (change)="onFileSelected($event)">
+    <button (click)="onUpload()" [disabled]="!file">Upload</button>
+  </div>
+  
+  <!-- Longest Pair Summary -->
+  <div *ngIf="response?.longestPair" class="summary">
+    <h3 class="center-heading">👥 Longest-Working Employee Pair</h3>
+    <table class="datagrid">
+      <thead>
+        <tr>
+          <th>Employee ID #1</th>
+          <th>Employee ID #2</th>
+          <th>Total Days Worked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ response.longestPair.empId1 }}</td>
+          <td>{{ response.longestPair.empId2 }}</td>
+          <td>{{ response.longestPair.totalDays }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Common Projects Table -->
+  <div *ngIf="response?.details?.length > 0" class="table-container">
+    <h3 class="center-heading">📋 Common Projects</h3>
+    <table class="datagrid">
+      <thead>
+        <tr>
+          <th>Employee ID #1</th>
+          <th>Employee ID #2</th>
+          <th>Project ID</th>
+          <th>Days Worked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of response.details">
+          <td>{{ row.empId1 }}</td>
+          <td>{{ row.empId2 }}</td>
+          <td>{{ row.projectId }}</td>
+          <td>{{ row.daysWorked }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
